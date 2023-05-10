@@ -1,5 +1,11 @@
 :root{
-
+    --azul1:#0F2F5B;
+    --azul2:hsl(222, 33%, 42%);
+    --celeste: #e5f0ff;
+    --oro:#D5A419;
+    --negro:#1a1b1f
+    --shadow: 0 8px 8px;
+    --color_shadow:#00000033;
 }
 *{
     margin:0;
@@ -8,5 +14,53 @@
 }
 body{
     font-family: 'Roboto', sans-serif;
-    
+
 }
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:0 auto;
+    overflow: hidden;
+    padding: 100px 0;
+    height: auto;
+}
+.container--modifier{
+    width:70%;
+}
+.hero{
+    width:100%;
+    min-height: 50vh;
+    background:linear-gradient(90deg,var(--azul1) 0% ,var(--azul2)100%);
+}
+.nav__hero{
+    color: #e5f0ff;
+    height: 80px;
+    border-bottom: 1px solid var(--oro);
+}
+.nav__container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: inherit;
+    padding: 0;
+}
+.logo__name{
+    font-size: 24px;
+}
+.link{
+    display:inline-flex;
+    color: inherit;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 400;
+    padding: 10px;
+}
+.link--active{
+    color:var(--oro);
+    font-weight:700 ;
+}
+.point{
+    color: var(--oro);
+}
+
+
