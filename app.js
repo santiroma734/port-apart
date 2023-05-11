@@ -5,7 +5,7 @@ const app = express();
 app.use(express.static("public"));
 
 //RUTAS//
-app.listen(process.env.PORT || 5000, () => {
+app.listen(process.env.PORT || 2000, () => {
     console.log("Servidor levantado")
 });
 
