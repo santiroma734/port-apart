@@ -1,22 +1,79 @@
-const express = require("express");
-const path = require("path");
-const app = express();
+// const express = require("express");
+// const path = require("path");
+// const app = express();
+// const indexRouter = require('./Routes/Index');
 
-app.use(express.static("public"));
+// app.use(express.static("public"));
 
-//RUTAS//
-app.listen(process.env.PORT || 2000, () => {
-    console.log("Servidor levantado")
-});
+// //RUTAS//
+// app.listen(3030, () => {
+//     console.log("Servidor funcionando");
+//   });
+// app.set("Views", path.join(__dirname + "/src/Views"));
+//   app.use(express.static(path.join(__dirname + "/public")));
 
-app.get("/", (req,res) => {
-    res.sendFile(path.join(__dirname, "/views/index.html"))
-});
-
-// app.get("/register", (req,res) => {
-//     res.sendFile(path.join(__dirname, "/views/register.html"))
+// app.get("/", (req,res) => {
+//     res.sendFile(path.join(__dirname, "src/Views/index.html"))
 // });
 
-// app.get("/login", (req,res) => {
-//     res.sendFile(path.join(__dirname, "/views/login.html"))
-// });
+// // app.get("/register", (req,res) => {
+// //     res.sendFile(path.join(__dirname, "/views/register.html"))
+// // });
+
+// // app.get("/login", (req,res) => {
+// //     res.sendFile(path.join(__dirname, "/views/login.html"))
+// // });
+var createError = require('http-errors');
+var express = require('express');
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
+const methodOverride = require('method-override');
+
+//Rutas
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
+const productsRouter = require('./routes/products');
+
+//Middlewares
+const logMiddleware = require('./middlewares/logMiddleware');
+
+var app = express();
+
+app.use(methodOverride('_method'));
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+
+app.use('/products', productsRouter);
+
+//Middlewares
+app.use(logMiddleware);
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  next(createError(404));
+});
+
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
+
+module.exports = app;

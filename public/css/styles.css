@@ -134,11 +134,71 @@ body {
     background: linear-gradient(90deg, var(--azul1) 0%, var(--azul2) 100%);
     border-radius: 10px;
     position: relative;
-    text-align: right;
+    text-align: left;
     margin-bottom: 60px;
     box-shadow: 0 0 6px var(--color_shadow);
+}
+.card__img{
+    width:95%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 20px 0 0 20px;
+    margin-left: auto;
+}
+.cards__text{
+    width:95%;
+    margin-left: auto;
+    padding-right: 25px;
+    justify-content: left;
 
 }
+card__title{
+    font-size: 40px;
+    color:#fff;
+    margin-bottom: 8px;
+}
+.card__copy{
+    color:var(--gris);
+    margin-bottom: 16px;
+}
+/* .card__button{
+    display: block;
+    background:var(--oro) ;
+    border-radius: 6px;
+    text-decoration: none;
+    width: 90%;
+    color: var(--negro);
+    font-weight: 700;
+    text-align: center;
+} */
+.card__button {
+	box-shadow: 0px 0px 4px 0px #fff6af;
+	background:linear-gradient(to bottom, #ffec64 5%, #ffa10a 100%);
+	background-color:#ffec64;
+	border-radius:10px;
+	border:1px solid #ffaa22;
+	display:block;
+	cursor:pointer;
+	color:#333333;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px;
+	text-decoration:none;
+	text-shadow:0px 0px 0px #ffee66;
+    text-align: center;
+    justify-content: center;
+    width: 50%;
+}
+.card__button:hover {
+	background:linear-gradient(to bottom, #ffa10a 5%, #ffec64 100%);
+	background-color:#ffa10a;
+}
+.card__button:active {
+	position:relative;
+	top:1px;
+}
+
 
 
 
